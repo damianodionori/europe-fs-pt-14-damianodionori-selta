@@ -90,10 +90,13 @@ def login():
 def logout():
     try:
         current_user = get_jwt_identity()
+
         if current_user is None:
             return jsonify({"error": "Invalid JWT token"}), 401
+
         response = jsonify({"message": "Successfully logged out"})
         unset_jwt_cookies(response)
+
         return response
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -168,7 +171,7 @@ def save_itinerary():
         data = request.json
 
         if "itinerary" in data:
-            itinerary = Itinerary(user=user, data=data["itinerary"], itinerary_name=data["Itinerary Name"])
+            itinerary = Itinerary(user=user, data=data["itinerary"], itinerary_name=data["itineraryName"])
             db.session.add(itinerary)
             db.session.commit()
 
