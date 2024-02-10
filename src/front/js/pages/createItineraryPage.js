@@ -5,10 +5,12 @@ import '../../styles/createItinerary.css';
 
 const CreateItineraryPage = () => {
   return (
-    <div className="form-container">
-      <div className="page-title">CreateItinerary</div>
+    <div className="itinerary-container">
+      <div className="page-title">Create Itinerary</div>
       <CreateItinerary />
-      <Link to="/">Go back to Home</Link>
+      <Link to="/privatePage" className="back-button">
+        Back to my Profile
+      </Link>
     </div>
   );
 };

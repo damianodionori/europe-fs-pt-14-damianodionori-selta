@@ -1,29 +1,55 @@
 // Navbar.js
-import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect, useContext } from "react";
+import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
 import "../../styles/navbar.css";
 import logoOrange from "../../img/logoOrange.png";
 import Login from "./login";
-
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const offcanvasRef = useRef(null)
+  const offcanvasRef = useRef(null);
+  const location = useLocation();
+  const openLogin = useParams();
+  let [searchParams, setSearchParams] = useSearchParams();
+  const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    if (searchParams.get("openLogin"))
+      openLoginModal();
+  }, [searchParams]);
 
   const openLoginModal = () => {
     setTimeout(() => {
       setIsLoginOpen(true);
-    }, 1); // 
+    }, 1);
   };
 
-
   const closeLoginModal = () => setIsLoginOpen(false);
+
+  const handleLogout = async () => {
+    try {
+      const response = await fetch(process.env.BACKEND_URL +'/api/logout', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${store.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+        console.log(response)
+        actions.setIsLoggedIn(false)
+        window.location.href = '/';
+    } catch (error) {
+      console.error('Error during logout:', error.message);
+    }
+  };
 
   return (
     <>
       <nav className="navbar navbar fixed-top p-0">
         <div className="container-fluid p-1">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand" href="/">
             <img src={logoOrange} alt="Logo" />
           </a>
 
@@ -69,13 +95,7 @@ export const Navbar = () => {
             <div className="offcanvas-body bg-dark">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/">
-                    Home
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link className="nav-link" to="#" onClick={() => {
-                    openLoginModal();
+                  <Link className="nav-link active" to="/" onClick={() => {
                     const offcanvas = offcanvasRef.current;
                     if (offcanvas) {
                       offcanvas.classList.remove("show");
@@ -88,14 +108,64 @@ export const Navbar = () => {
                         overlay.remove()
                       }
                     }
-                  }
-                  }
-                  >
-                    Login
+                  }}>
+                    Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/signup">
+                  {store.isLoggedIn ? (
+                    <Link className="nav-link" to="#" onClick={() => {
+                      handleLogout();
+                      const offcanvas = offcanvasRef.current;
+                      if (offcanvas) {
+                        offcanvas.classList.remove("show");
+                        const backdrop = document.querySelector(".offcanvas-backdrop");
+                        if (backdrop) {
+                          backdrop.classList.remove("show");
+                        }
+                        const overlay = document.querySelector(".modal-overlay");
+                        if (overlay) {
+                          overlay.remove()
+                        }
+                      }
+                    }}>
+                      Logout
+                    </Link>
+                  ) : (
+                    <Link className="nav-link" to="#" onClick={() => {
+                      openLoginModal();
+                      const offcanvas = offcanvasRef.current;
+                      if (offcanvas) {
+                        offcanvas.classList.remove("show");
+                        const backdrop = document.querySelector(".offcanvas-backdrop");
+                        if (backdrop) {
+                          backdrop.classList.remove("show");
+                        }
+                        const overlay = document.querySelector(".modal-overlay");
+                        if (overlay) {
+                          overlay.remove()
+                        }
+                      }
+                    }}>
+                      Login
+                    </Link>
+                  )}
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/signup" onClick={() => {
+                    const offcanvas = offcanvasRef.current;
+                    if (offcanvas) {
+                      offcanvas.classList.remove("show");
+                      const backdrop = document.querySelector(".offcanvas-backdrop");
+                      if (backdrop) {
+                        backdrop.classList.remove("show");
+                      }
+                      const overlay = document.querySelector(".modal-overlay");
+                      if (overlay) {
+                        overlay.remove()
+                      }
+                    }
+                  }}>
                     Sign Up
                   </Link>
                 </li>
