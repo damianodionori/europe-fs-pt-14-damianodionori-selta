@@ -1,13 +1,26 @@
+
+
+
 .form-container {
-    max-width: 400px;
-    margin: 100px auto;
+    max-width: 600px;
+    width: 400px;
+    margin:100px auto;
     padding: 20px;
     border: 1px solid #333;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #333;
     color: #fff;
-    
+    position: relative;
+
+}
+
+.container1{
+    height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 100px auto
+
 }
 
 .page-title {

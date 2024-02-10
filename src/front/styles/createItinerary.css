@@ -62,6 +62,7 @@ body {
   font-weight: bold;
   font-size: 16px;
   text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -201,6 +202,7 @@ body {
   width: 100%;
   max-width: 600px;
   background-color: #ffa500;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .generated-itinerary h2 {
@@ -230,6 +232,8 @@ body {
   border-top: 2px solid black;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 2px;
+  
 }
 
 .days {
@@ -240,22 +244,33 @@ body {
 .object {
   display: flex;
   flex-direction: column;
-}
-
-.object strong {
   font-weight: bold;
   color: black;
   background-color: #FF8C00;
   padding: 2px;
   border-radius: 2px;
+  
+}
+
+.object strong {
+  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .generated-itinerary ul {
   list-style-type: none;
   padding: 0;
   margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .generated-itinerary li {
   margin-bottom: 5px;
+}
+
+.mapped {
+  background-color: #FF8C00;
+  border-radius: 5px;
 }

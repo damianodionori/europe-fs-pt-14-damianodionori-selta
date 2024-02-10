@@ -180,18 +180,18 @@ const CreateItinerary = () => {
               <div className='answer-item '>
                 {generatedItinerary ? (
                   <div className='generated-itinerary' id='generated-itinerary'>
-                    <h2>Generated Itinerary</h2>
+                    <h2>Your Itinerary</h2>
                     {generatedItinerary.map((day, index) => (
                       <div className="mapped" key={index}>
                         <div className='days'> <h3>Day {index + 1}</h3> </div>
                         <div className='itinerary'>
                           <div className='object'><strong>Accomodation</strong> {day.accomodation}</div> <br />
-                           <div className='object'><strong>Activities</strong></div>
+                           <div className='object'><strong>Activities</strong>
                           <ul>
                             {day.activities.map((activity, i) => (
                               <li key={i}>{activity}</li>
                             ))}
-                          </ul>
+                          </ul></div>
                           <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
                           <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
                           <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
