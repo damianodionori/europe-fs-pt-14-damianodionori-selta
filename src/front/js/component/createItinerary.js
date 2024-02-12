@@ -180,7 +180,6 @@ const CreateItinerary = () => {
               <div className='answer-item '>
                 {generatedItinerary ? (
                   <div className='generated-itinerary' id='generated-itinerary'>
-                    <h2>Your Itinerary</h2>
                     {generatedItinerary.map((day, index) => (
                       <div className="mapped" key={index}>
                         <div className='days'> <h3>Day {index + 1}</h3> </div>
