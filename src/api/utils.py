@@ -98,6 +98,8 @@ def get_openai_response(user_input):
 
             Please note that the comments are not valid as an output in a JSON format. Just use them for guidance.
 
+            Do not output any other JSON strings that would not follow the above format.
+
             """,
         },
         {

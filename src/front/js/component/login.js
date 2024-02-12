@@ -23,21 +23,20 @@ function Login({ show, handleClose, }) {
         body: JSON.stringify({ email, password }),
       });
       
-
       const data = await response.json();
+          
+      localStorage.setItem("accessToken", data.access_token)
 
       actions.setAccessToken(data.access_token);
       actions.setIsLoggedIn (true);
-
-      localStorage.setItem("accessToken", data.access_token)
       
       navigate(`/privatePage`);
       
       handleClose();
 
     } catch (error) {
-      setError("An unexpected error occurred");
-      console.error(error);
+      console.error('Error during login:', error);
+      setStore({ message: 'Login failed. Please try again.' });
     }
   };
 
