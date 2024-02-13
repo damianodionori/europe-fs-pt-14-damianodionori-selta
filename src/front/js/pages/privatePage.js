@@ -10,7 +10,7 @@ const PrivatePageContainer = () => {
     };
 
     return (
-        <div>
+        <div className='minheight'>
             <PrivatePage user={user} />
         </div>
     );
