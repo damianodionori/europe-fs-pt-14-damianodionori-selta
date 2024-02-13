@@ -203,7 +203,7 @@ const CreateItinerary = () => {
                     ))}
                     {store.accessToken && (
                       <div>
-                        <input type="text" name="Itinerary Name" onChange={e => setItineraryName(e.target.value)}></input>
+                        <input type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)}></input>
                         <Button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</Button>
                       </div>
                     )}
