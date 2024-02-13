@@ -94,7 +94,7 @@ const CreateItinerary = () => {
     const handleSaveItinerary = async () => {
       try {
         const accessToken = store.accessToken;
-   
+
         const response = await fetch(process.env.BACKEND_URL + '/api/saveItinerary', {
           method: 'POST',
           headers: {
@@ -106,11 +106,13 @@ const CreateItinerary = () => {
             itineraryName: itineraryName,
           }),
         });
-    
+
         console.log(response);
-    
+
         if (!response.ok) {
           console.error('Error saving itinerary:', response.statusText);
+        } else {
+          alert("Itinerary successfully saved!");
         }
       } catch (error) {
         console.error('Error:', error.message);
@@ -186,21 +188,25 @@ const CreateItinerary = () => {
                         <div className='days'> <h3>Day {index + 1}</h3> </div>
                         <div className='itinerary'>
                           <div className='object'><strong>Accomodation</strong> {day.accomodation}</div> <br />
-                           <div className='object'><strong>Activities</strong>
-                          <ul>
-                            {day.activities.map((activity, i) => (
-                              <li key={i}>{activity}</li>
-                            ))}
-                          </ul></div>
+                          <div className='object'><strong>Activities</strong>
+                            <ul>
+                              {day.activities.map((activity, i) => (
+                                <li key={i}>{activity}</li>
+                              ))}
+                            </ul></div>
                           <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
                           <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
                           <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
                         </div>
-                        {index < generatedItinerary.length -1 && <hr className='day-divider'/>}
+                        {index < generatedItinerary.length - 1 && <hr className='day-divider' />}
                       </div>
                     ))}
-                    <input type="text" name="Itinerary Name" onChange={e => setItineraryName(e.target.value)}></input>
-                    <Button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</Button>
+                    {store.accessToken && (
+                      <div>
+                        <input type="text" name="Itinerary Name" onChange={e => setItineraryName(e.target.value)}></input>
+                        <Button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</Button>
+                      </div>
+                    )}
                   </div>
                 ) : (
                   'AI Answer'
