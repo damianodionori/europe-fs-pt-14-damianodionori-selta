@@ -30,6 +30,7 @@ export const Navbar = () => {
 
   const handleLogout = async () => {
     try {
+
       const response = await fetch(process.env.BACKEND_URL +'/api/logout', {
         method: 'POST',
         headers: {
@@ -115,7 +116,7 @@ export const Navbar = () => {
                 <li className="nav-item">
                   {store.isLoggedIn ? (
                     <Link className="nav-link" to="#" onClick={() => {
-                      handleLogout();
+                      handleLogout().then(actions.setAccessToken(null));
                       const offcanvas = offcanvasRef.current;
                       if (offcanvas) {
                         offcanvas.classList.remove("show");

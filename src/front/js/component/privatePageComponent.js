@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import "../../styles/privatePage.css";
 import BasicInfo from "./PrivatePage/basicInfo.js";
+import { Link, useNavigate } from 'react-router-dom';
 import Password from './PrivatePage/password.js';
 import Bookmark from './PrivatePage/bookmark.js';
 import { Context } from "../store/appContext";
-import { Link } from 'react-router-dom';
 
 
 const PrivatePage = () => {
@@ -13,12 +13,24 @@ const PrivatePage = () => {
     const { store, actions } = useContext(Context);
     const [showModal, setShowModal] = useState(false);
     const [userData, setUserData] = useState(null);
+    const toLogin = useNavigate();
 
 
     useEffect(() => {
+
+        const storedToken = localStorage.getItem('accessToken');
+
+        if (!storedToken) {
+            toLogin ("/?openLogin=true")
+        }
+        
+        if (!store.accessToken) {
+            return
+        }
+
         const fetchUserData = async () => {
             try {
-                const accessToken = actions.getAccessToken();
+                const accessToken = store.accessToken;
 
                 const response = await fetch(process.env.BACKEND_URL + '/api/privatePage', {
                     method: 'GET',
@@ -35,7 +47,17 @@ const PrivatePage = () => {
                     console.log(userData);
                     
                 } else {
-                    console.error('Error fetching user data:', response.statusText);
+                    if (response.status === 422) {
+
+                        localStorage.removeItem('access_token');
+                        actions.setAccessToken(null);
+                        actions.setIsLoggedIn(false);
+                        
+                        toLogin ("/?openLogin=true")
+
+                    } else {
+                        console.error('Error fetching user data:', response.statusText);
+                    }
                 }
             } catch (error) {
                 console.error('Error:', error.message);
@@ -71,7 +93,7 @@ const PrivatePage = () => {
         if (activeTab === 'bookmarks') {
             fetchSavedItineraries();
         }
-    }, [activeTab, setSavedItineraries]);
+    }, [activeTab, setSavedItineraries, store.accessToken]);
 
     const handleTabChange = (tabId) => {
         setActiveTab(tabId);
