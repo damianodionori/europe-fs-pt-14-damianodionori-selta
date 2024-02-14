@@ -74,21 +74,21 @@ def get_openai_response(user_input):
             Dietary requirement: Vegan
             Budget: 100£ per day
 
-            This is the expected output format and the info:
-            [
+            This is an example of the JSON output:
+
+            "days": [
             {
-            // each object is considered a new day
-            "accomodation":"Bob's hotel 4 stars",
+            "accommodation":"Bob's hotel 4 stars",
             "lunch":"MCDonnalds at president's shopping mall",
             "activities":[
                 "Museum of classic Rome History",
                 "Museum of Big Bang"
             ],
-            "transportation":"Public transportation: Bus or Metro",  // Verify if public transportation of the given location is good otherwise choose alternatives
-            "dinner":"Seafood at sea's restaurant, av. lib. 25" // choose a different food style from lunch that matches the user's particularities
+            "transportation":"Public transportation: Bus or Metro",
+            "dinner":"Seafood at sea's restaurant, av. lib. 25",
             },
             {
-            "accomodation": "Junior AirBnB at street 25",
+            "accommodation": "Junior AirBnB at street 25",
             "lunch": "Italian Republic at Principal street",
             "activities": ["Walk at the lake's shore", "Go to the giant monument of Leo"],
             "transportation": "Taxi or Uber",

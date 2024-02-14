@@ -78,7 +78,7 @@ const CreateItinerary = () => {
         const result = await response.json();
 
         if (response.ok) {
-          setGeneratedItinerary(result.itinerary);
+          setGeneratedItinerary(result.days);
           setQuizInProgress(false);
         } else {
           console.error('Error generating itinerary:', result.error);
@@ -178,6 +178,7 @@ const CreateItinerary = () => {
                 )}
               </div>
             </div>
+            <div className='answer-card'>
             <div className='answer-box'>
               <div className='answer-item '>
                 {generatedItinerary ? (
@@ -186,7 +187,7 @@ const CreateItinerary = () => {
                       <div className="mapped" key={index}>
                         <div className='days'> <h3>Day {index + 1}</h3> </div>
                         <div className='itinerary'>
-                          <div className='object'><strong>Accomodation</strong> {day.accomodation}</div> <br />
+                          <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
                           <div className='object'><strong>Activities</strong>
                             <ul>
                               {day.activities.map((activity, i) => (
@@ -211,6 +212,7 @@ const CreateItinerary = () => {
                   'AI Answer'
                 )}
               </div>
+            </div>
             </div>
           </div>
         </div>
