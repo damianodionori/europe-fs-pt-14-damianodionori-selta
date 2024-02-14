@@ -239,6 +239,7 @@ body {
 .days {
   display: flex;
   justify-content: center;
+  color: white;
 }
 
 .object {
@@ -273,4 +274,7 @@ body {
 .mapped {
   background-color: #FF8C00;
   border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+  text-align: center;
 }
