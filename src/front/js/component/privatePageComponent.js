@@ -49,7 +49,7 @@ const PrivatePage = () => {
                 } else {
                     if (response.status === 422) {
 
-                        localStorage.removeItem('access_token');
+                        localStorage.removeItem('accessToken');
                         actions.setAccessToken(null);
                         actions.setIsLoggedIn(false);
                         

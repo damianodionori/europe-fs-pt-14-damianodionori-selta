@@ -1,5 +1,6 @@
 import React from 'react';
 import PrivatePage from '../component/privatePageComponent.js';
+import '../../styles/privatePageBg.css';
 
 const PrivatePageContainer = () => {
     const user = {
@@ -10,8 +11,10 @@ const PrivatePageContainer = () => {
     };
 
     return (
-        <div className='minheight'>
-            <PrivatePage user={user} />
+        <div className='privatepage-bg-image'>
+            <div className='minheight'>
+                <PrivatePage user={user} />
+            </div>
         </div>
     );
 }

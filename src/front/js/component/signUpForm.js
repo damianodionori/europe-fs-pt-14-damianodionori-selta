@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import '../../styles/authForms.css';
 import { Context } from "../store/appContext";
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpForm = ({openLoginModal}) => {
 

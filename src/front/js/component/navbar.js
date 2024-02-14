@@ -1,6 +1,6 @@
 // Navbar.js
 import React, { useState, useRef, useEffect, useContext } from "react";
-import { Link, useLocation, useParams, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useLocation, useParams, useSearchParams } from "react-router-dom";
 import "../../styles/navbar.css";
 import logoOrange from "../../img/logoOrange.png";
 import Login from "./login";
@@ -12,6 +12,7 @@ export const Navbar = () => {
   const offcanvasRef = useRef(null);
   const location = useLocation();
   const openLogin = useParams();
+  const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
   const { store, actions } = useContext(Context);
 
@@ -38,9 +39,13 @@ export const Navbar = () => {
           'Content-Type': 'application/json',
         },
       });
-        console.log(response)
-        actions.setIsLoggedIn(false)
-        window.location.href = '/';
+      console.log(response)
+
+      if (response.ok) {
+        localStorage.removeItem('accessToken');
+        actions.setIsLoggedIn(false);
+        navigate('/');
+      }
     } catch (error) {
       console.error('Error during logout:', error.message);
     }
