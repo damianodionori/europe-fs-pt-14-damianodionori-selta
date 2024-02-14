@@ -3,8 +3,8 @@ import "../../styles/privatePage.css";
 import BasicInfo from "./PrivatePage/basicInfo.js";
 import { Link, useNavigate } from 'react-router-dom';
 import Password from './PrivatePage/password.js';
+import Bookmark from './PrivatePage/bookmark.js';
 import { Context } from "../store/appContext";
-
 
 
 const PrivatePage = () => {
@@ -12,7 +12,6 @@ const PrivatePage = () => {
     const [savedItineraries, setSavedItineraries] = useState([]);
     const { store, actions } = useContext(Context);
     const [showModal, setShowModal] = useState(false);
-    const [selectedItinerary, setSelectedItinerary] = useState(null);
     const [userData, setUserData] = useState(null);
     const toLogin = useNavigate();
 
@@ -100,12 +99,7 @@ const PrivatePage = () => {
         setActiveTab(tabId);
     };
 
-    const handleViewItinerary = (index) => {
-        const selectedItinerary = savedItineraries[index];
-        setSelectedItinerary(selectedItinerary);
-        setShowModal(true);
-    };
-
+    
     return (
         <div className="container">
             <div className="card card-nav">
@@ -193,42 +187,10 @@ const PrivatePage = () => {
                         <BasicInfo email={userData?.email} firstName={userData?.first_name} lastName={userData?.last_name} />
                     </div>
                     <div className={`tab-pane fade show ${activeTab === 'change-password' ? 'active' : ''}`} id="change-password">
-                        <Password></Password>
+                        <Password />
                     </div>
                     <div className={`tab-pane fade show ${activeTab === 'bookmarks' ? 'active' : ''}`} id="bookmarks">
-                        {console.log(savedItineraries)}
-                        {savedItineraries && savedItineraries.length > 0 ? (
-                            savedItineraries.map((itinerary, index) => (
-                                <div key={index}>
-                                    {itinerary.itinerary_name && <h2>{itinerary.itinerary_name}</h2>}
-                                    <div>
-                                        {itinerary.data.map((day, index) => (
-                                            <div className="mapped" key={index}>
-                                                <div className='days'> <h3>Day {index + 1}</h3> </div>
-                                                <div className='itinerary'>
-                                                    <div className='object'><strong>Accomodation</strong> {day.accomodation}</div> <br />
-                                                    <div className='object'><strong>Activities</strong></div>
-                                                    <ul>
-                                                        {day.activities.map((activity, i) => (
-                                                            <li key={i}>{activity}</li>
-                                                        ))}
-                                                    </ul>
-                                                    <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
-                                                    <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
-                                                    <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
-                                                </div>
-                                                {index < itinerary.data.length - 1 && <hr className='day-divider' />}
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <button onClick={() => handleViewItinerary(index)}>
-                                        View Full Itinerary
-                                    </button>
-                                </div>
-                            ))
-                        ) : (
-                            <p>No saved itineraries yet</p>
-                        )}
+                        <Bookmark savedItineraries={savedItineraries} activeTab={activeTab} />
                     </div>
                     <div className={`tab-pane fade show ${activeTab === 'achievements' ? 'active' : ''}`} id="achievements">
                         <p>Achievements Content Goes Here</p>
