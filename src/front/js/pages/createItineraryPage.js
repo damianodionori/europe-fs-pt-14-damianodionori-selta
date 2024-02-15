@@ -11,7 +11,7 @@ const CreateItineraryPage = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className='minheight' style={{ backgroundImage: `url(${patternImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+    <div className='minheight' style={{ backgroundImage: `url(${patternImage})`}}>
       <div className="overlay3"></div>
       <div className='it-container'>
       <div className="itinerary-container">
