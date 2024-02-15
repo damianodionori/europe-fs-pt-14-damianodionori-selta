@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, Modal, Form } from 'react-bootstrap';
 import '../../styles/createItinerary.css';
 import avatar1 from "../../img/avatar1.png";
 import { Context } from "../store/appContext";
@@ -204,7 +203,7 @@ const CreateItinerary = () => {
                     {store.accessToken && (
                       <div>
                         <input type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)}></input>
-                        <Button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</Button>
+                        <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
                       </div>
                     )}
                   </div>

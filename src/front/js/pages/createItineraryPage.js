@@ -12,7 +12,6 @@ const CreateItineraryPage = () => {
 
   return (
     <div className='minheight' style={{ backgroundImage: `url(${patternImage})`}}>
-      <div className="overlay3"></div>
       <div className='it-container'>
       <div className="itinerary-container">
         <div className="page-title">Create Itinerary</div>

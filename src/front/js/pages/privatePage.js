@@ -14,9 +14,9 @@ const PrivatePageContainer = () => {
     return (
         <div className='minheight' style={{ backgroundImage: `url(${patternImage})` }}>
             <div className='overlay3'></div>
-            <div>
+
                 <PrivatePage user={user} />
-            </div>
+            
         </div>
 
     );

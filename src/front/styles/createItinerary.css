@@ -10,14 +10,6 @@ body {
   width: 100%;
 }
 
-.overlay3 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: -1;
-}
-
 .card {
   width: 100%;
   max-width: 40rem;
@@ -190,6 +182,9 @@ body {
   background-color: #ffa500;
 }
 
+.save-button:active {
+  background-color: #FF8C00;
+}
 
 /* CSS answer AI */
 .answer-card {
