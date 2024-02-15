@@ -224,5 +224,10 @@ label {
   }
 
   .minheight {
+    
+    background-position: center;
+    background-repeat: space;
     min-height: 100vh;
+    z-index: -2;
+    padding-bottom: 50px;
   }

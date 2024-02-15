@@ -36,7 +36,7 @@ function Bookmark({ savedItineraries, activeTab }) {
                     <div className="mapped"  key={dayIndex}>
                       <div className='days'> <h3>Day {dayIndex + 1}</h3> </div>
                       <div className='itinerary'>
-                        <div className='object'><strong>Accommodation</strong> {day.accomodation}</div> <br />
+                        <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
                         <div className='object'><strong>Activities</strong></div>
                         <ul>
                           {day.activities.map((activity, i) => (

@@ -2,7 +2,6 @@
     background-image: url(https://i.pinimg.com/originals/94/b6/84/94b6843382aad570a497bb5884b216ca.jpg);
     background-size: cover;
     background-position: center;
-    height: 100vh;
     display: flex;
     flex-direction: column;
   
@@ -24,6 +23,10 @@
     
 }
 
+.container2 {
+    padding-top: 250px;
+    padding-bottom: 250px;
+}
 h1 {
     padding: 70px;
 }

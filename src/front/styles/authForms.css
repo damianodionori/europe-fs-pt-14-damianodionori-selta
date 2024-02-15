@@ -1,6 +1,4 @@
 
-
-
 .form-container {
     max-width: 600px;
     width: 400px;
@@ -16,11 +14,18 @@
 }
 
 .container1{
-    height: 100vh;
     display: flex;
     flex-direction: column-reverse;
-    margin: 100px auto
+    margin: 50px auto
 
+}
+
+.overlay2 {
+    position: absolute;
+    width: 100%;
+    height: 961px;
+    background-color: rgba(0, 0, 0, 0.7);
+    
 }
 
 .page-title {

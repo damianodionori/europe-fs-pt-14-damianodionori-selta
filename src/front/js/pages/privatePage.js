@@ -1,5 +1,7 @@
 import React from 'react';
 import PrivatePage from '../component/privatePageComponent.js';
+import patternImage from '../../img/pattern.jpg'
+import '../../styles/privatePage.css';
 
 const PrivatePageContainer = () => {
     const user = {
@@ -10,9 +12,13 @@ const PrivatePageContainer = () => {
     };
 
     return (
-        <div className='minheight'>
-            <PrivatePage user={user} />
+        <div className='minheight' style={{ backgroundImage: `url(${patternImage})` }}>
+            <div className='overlay3'></div>
+
+                <PrivatePage user={user} />
+            
         </div>
+
     );
 }
 
