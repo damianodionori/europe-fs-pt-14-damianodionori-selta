@@ -16,7 +16,7 @@ function Bookmark({ savedItineraries, activeTab }) {
             <div className="card" key={index}>
               <div className="card-header1" id={`head${index}`}>
                 <h5 className="mb-0">
-                  <button className="btn" onClick={() => toggleAccordion(index)} aria-expanded={openAcor === index} aria-controls={`collapse${index}`}>
+                  <button id='it-name' className="btn" onClick={() => toggleAccordion(index)} aria-expanded={openAcor === index} aria-controls={`collapse${index}`}>
                     {itinerary.itinerary_name}
                   </button> 
                 </h5>
@@ -30,7 +30,7 @@ function Bookmark({ savedItineraries, activeTab }) {
                
               </div>
 
-              <div id={`collapse${index}`} className={`collapse ${openAcor === index ? 'show' : ''}`} aria-labelledby={`heading${index}`} data-parent="#accordion">
+              <div id="collapse1" className={`collapse ${openAcor === index ? 'show' : ''}`} aria-labelledby={`heading${index}`} data-parent="#accordion">
                 <div className="card-body" id='bookmap'>
                   {itinerary.data.map((day, dayIndex) => (
                     <div className="mapped"  key={dayIndex}>

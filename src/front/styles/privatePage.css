@@ -186,6 +186,9 @@ label {
 
   /* private-page */
 
+  #it-name {
+    font-weight: bold;
+  }
   
   #accordion {
     display: flex;
@@ -193,8 +196,9 @@ label {
     align-items: center;
   }
 
-  #collapse0 {
-    background-color: #FFBB3F;
+  #collapse1 {
+    background-color: #FFA500;
+  
   }
 
   ul {
@@ -203,9 +207,9 @@ label {
   }
 
   #bookmap {
-    background-color: #FF8C00;
+    background-color: #FFA500;
     border-radius: 5px;
-    padding: 5px;
+    padding: 15px;
     margin-bottom: 15px;
   }
 
