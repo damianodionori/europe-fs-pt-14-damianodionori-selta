@@ -10,15 +10,18 @@ const CreateItineraryPage = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="itinerary-container">
-      <div className="page-title">Create Itinerary</div>
-      <CreateItinerary />
-      {store.accessToken && (
-      <Link to="/privatePage" className="back-button">
-        Back to my Profile
-      </Link>)}
+    <div className=''>
+      <div className="overlay3"></div>
+      <div className="itinerary-container">
+        <div className="page-title">Create Itinerary</div>
+        <CreateItinerary />
+        {store.accessToken && (
+          <Link to="/privatePage" className="back-button">
+            Back to my Profile
+          </Link>)}
+      </div>
     </div>
-  );
+      );
 };
 
-export default CreateItineraryPage;
+      export default CreateItineraryPage;
