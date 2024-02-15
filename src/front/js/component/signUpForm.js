@@ -61,23 +61,23 @@ const SignUpForm = ({openLoginModal}) => {
 
             <div className="form-group">
                 <label className="label">First Name:</label>
-                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" />
+                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Last Name:</label>
-                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="input" />
+                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Email:</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Password:</label>
-                <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="input" />
+                <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Confirm Password:</label>
-                <input type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="input" />
+                <input type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="input" required/>
             </div>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <div className="eye-icon-container" >
