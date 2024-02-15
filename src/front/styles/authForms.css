@@ -16,8 +16,16 @@
 .container1{
     display: flex;
     flex-direction: column-reverse;
-    margin: 100px auto
+    margin: 50px auto
 
+}
+
+.overlay2 {
+    position: absolute;
+    width: 100%;
+    height: 958px;
+    background-color: rgba(0, 0, 0, 0.7);
+    
 }
 
 .page-title {

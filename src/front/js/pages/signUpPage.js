@@ -5,6 +5,7 @@ import '../../styles/authForms.css';
 const SignUpPage = () => {
   return (
     <div className='bg'>
+      <div className="overlay2"></div>
       <div className="container1">
         <SignUpForm />
       </div>
