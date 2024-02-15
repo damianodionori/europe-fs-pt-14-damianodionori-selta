@@ -4,14 +4,16 @@ import { Link } from 'react-router-dom';
 import '../../styles/createItinerary.css';
 import { useContext } from 'react';
 import { Context } from "../store/appContext";
+import patternImage from '../../img/pattern.jpg'
 
 const CreateItineraryPage = () => {
 
   const { store, actions } = useContext(Context);
 
   return (
-    <div className=''>
+    <div className='minheight' style={{ backgroundImage: `url(${patternImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <div className="overlay3"></div>
+      <div className='it-container'>
       <div className="itinerary-container">
         <div className="page-title">Create Itinerary</div>
         <CreateItinerary />
@@ -20,8 +22,9 @@ const CreateItineraryPage = () => {
             Back to my Profile
           </Link>)}
       </div>
+      </div>
     </div>
-      );
+  );
 };
 
-      export default CreateItineraryPage;
+export default CreateItineraryPage;

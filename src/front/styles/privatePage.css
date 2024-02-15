@@ -220,7 +220,12 @@ label {
   }
 
   .minheight {
+    background-size: 'cover';
+    background-position: 'center';
+    background-repeat: repeat;
     min-height: 100vh;
+    width: ;
+    z-index: -2;
   }
 
   .overlay3 {
