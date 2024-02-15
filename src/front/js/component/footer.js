@@ -40,11 +40,6 @@ export const Footer = () => (
     </ul>
     <ul className="menu">
       <li className="menu__item">
-        <Link to="/" className="menu__link" href="#">
-          Home
-        </Link>
-      </li>
-      <li className="menu__item">
         <a className="menu__link" href="#">
           About
         </a>

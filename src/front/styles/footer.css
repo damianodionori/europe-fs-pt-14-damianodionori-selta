@@ -42,6 +42,7 @@
 
 .social-icon__link:hover {
     transform: translateY(-10px);
+    color: black;
 }
 
 .menu__link {
