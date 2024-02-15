@@ -23,20 +23,24 @@ function Login({ show, handleClose, }) {
         body: JSON.stringify({ email, password }),
       });
       
+      if (!response.ok) {
+        throw new Error('Login failed. Please check your email and password.');
+      }
+      
       const data = await response.json();
           
       localStorage.setItem("accessToken", data.access_token)
-
+  
       actions.setAccessToken(data.access_token);
-      actions.setIsLoggedIn (true);
+      actions.setIsLoggedIn(true);
       
       navigate(`/privatePage`);
       
       handleClose();
-
+  
     } catch (error) {
       console.error('Error during login:', error);
-      setStore({ message: 'Login failed. Please try again.' });
+      alert(error.message); // Display alert for error message
     }
   };
 
