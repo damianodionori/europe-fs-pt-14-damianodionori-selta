@@ -63,9 +63,27 @@ const CreateItinerary = () => {
         ...oldValue,
         [getKeyByIndex()]: userAnswers[getKeyByIndex()],
       }));
+
+      if (currentQuestionIndex === 2) {
+        const numDays = parseInt(userAnswers["Time at disposal"]);
+        if (!store.accessToken && (isNaN(numDays) || numDays > 3)) {
+          alert("In the Demo version, you can only see itineraries of up to 3 days. Please Login to unlock this feature!");
+          return;
+        }
+      }
+
       setCurrentQuestionIndex(currentQuestionIndex + 1);
 
       if (currentQuestionIndex === 7) {
+        if (!store.accessToken) {
+          const numItineraries = parseInt(sessionStorage.getItem('numItineraries')) || 0;
+          if (numItineraries >= 3) {
+            alert("In the Demo version, you can only generate up to 3 itineraries per day.");
+            return;
+          }
+          // Increment the number of itineraries
+          sessionStorage.setItem('numItineraries', numItineraries + 1);
+        }
         const response = await fetch(process.env.BACKEND_URL + '/api/createItinerary', {
           method: 'POST',
           headers: {
@@ -123,6 +141,13 @@ const CreateItinerary = () => {
     };
 
     const handleStartAgain = () => {
+      if (!store.accessToken) {
+        const numItineraries = parseInt(sessionStorage.getItem('numItineraries')) || 0;
+        if (numItineraries >= 3) {
+          alert("In the Demo version, you can only generate up to 3 itineraries per day.");
+          return;
+        }
+      }
       setQuestions(initialQuestions);
       setCurrentQuestionIndex(0);
       setUserAnswers([]);
