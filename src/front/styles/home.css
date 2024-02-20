@@ -24,15 +24,15 @@
 }
 
 .container2 {
-    padding-top: 250px;
-    padding-bottom: 250px;
+    padding-top: 248px;
+    padding-bottom: 248px;
 }
 h1 {
-    padding: 70px;
+    padding: 72px;
 }
 
 p {
-    padding: 10px;
+    padding: 8px;
 }
 
 .overlay {
@@ -51,7 +51,7 @@ p {
 #button-lead {
     display: inline-block;
     border: 2px solid;
-    padding: 10px 20px;
+    padding: 8px 16px;
     color: #fff;
     text-decoration: none;
     transition: 0.3s;

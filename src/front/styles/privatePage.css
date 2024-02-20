@@ -1,6 +1,6 @@
 /* privatePage.css */
 .card-nav {
-    margin: 50px auto;
+    margin: 48px auto;
     max-width: 1000px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
  
@@ -11,13 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
 .nav-item{
-    padding: 5px;
+    padding: 8px;
     
 }
 
@@ -25,7 +25,7 @@
 .nav-tabs .nav-item .nav-link {
     color: #333;
     font-weight: bold;
-    padding: 10px;
+    padding: 8px;
     border-radius: 8px;
     transition: background-color  0.3s ease, color 0.3s ease;
     outline: none;
@@ -50,15 +50,15 @@
 .tab-pane {
     
     border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px;
+    padding: 8px;
+    margin-top: 16px;
     background-color: #ffeac4;
     color: black;
 }
 
 .tab-content {
     background-color: #FFA500;
-    padding: 20px;
+    padding: 16px;
     border-radius: 0 0 10px 10px;
 }
 
@@ -99,7 +99,7 @@ label {
 .password-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 16px;
     background-color: #FFA500;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -116,13 +116,13 @@ label {
   }
   
   label {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
   
   input {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
+    padding: 8px;
+    margin-top: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
   }
@@ -130,7 +130,7 @@ label {
   #colorChange {
     background-color: black;
     color: #FFA500;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -209,8 +209,8 @@ label {
   #bookmap {
     background-color: #FFA500;
     border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 16px;
+    margin-bottom: 16px;
   }
 
   .card-header1 {
@@ -218,7 +218,7 @@ label {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    padding: 8px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
@@ -227,5 +227,5 @@ label {
     background-position: center;
     min-height: 100vh;
     z-index: -2;
-    padding-bottom: 50px;
+    padding-bottom: 48px;
   }

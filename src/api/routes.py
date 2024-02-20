@@ -36,7 +36,6 @@ def handle_hello():
 @api.route("/signup", methods=["POST"])
 def signup():
     first_name = request.json.get("first_name")
-    last_name = request.json.get("last_name")
     email = request.json.get("email")
     password = request.json.get("password")
     confirm_password = request.json.get("confirm_password")
@@ -54,7 +53,6 @@ def signup():
 
     new_user = User(
         first_name=first_name,
-        last_name=last_name,
         email=email,
         password=hashed_password,
     )
@@ -125,7 +123,7 @@ def private_page():
         if not user:
             return jsonify({"error": "User not found"}), 404
 
-        return jsonify(first_name=user.first_name, last_name=user.last_name, email=user.email)
+        return jsonify(first_name=user.first_name, email=user.email)
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

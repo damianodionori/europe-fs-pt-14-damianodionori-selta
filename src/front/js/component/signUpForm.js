@@ -7,7 +7,6 @@ const SignUpForm = ({openLoginModal}) => {
 
     const {store, actions} = useContext(Context)
     const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -28,7 +27,6 @@ const SignUpForm = ({openLoginModal}) => {
         try {
             const response = await actions.signup({
                 first_name: firstName,
-                last_name: lastName,
                 email: email,
                 password: password,
                 confirm_password: confirmPassword,
@@ -62,10 +60,6 @@ const SignUpForm = ({openLoginModal}) => {
             <div className="form-group">
                 <label className="label">First Name:</label>
                 <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" required />
-            </div>
-            <div className="form-group">
-                <label className="label">Last Name:</label>
-                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Email:</label>
