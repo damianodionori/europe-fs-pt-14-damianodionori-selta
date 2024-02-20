@@ -85,6 +85,10 @@ const CreateItinerary = () => {
       }
     };
 
+    const goToPreviousQuestion = () => {
+      setCurrentQuestionIndex(currentQuestionIndex - 1);
+    };
+
     const getKeyByIndex = () => {
       const keys = Object.keys(questions);
       return keys[currentQuestionIndex];
@@ -169,6 +173,9 @@ const CreateItinerary = () => {
                       onKeyPress={handleAnswerInput}
                       required
                     />
+                    {currentQuestionIndex !== 0 && (
+                      <button id='nextbutton' className='me-4' onClick={goToPreviousQuestion}>Previous Question</button>
+                    )}
                     <button id='nextbutton' onClick={askNextQuestion}>{currentQuestionIndex === 7 ? 'Generate Itinerary' : 'Next Question'}</button>
                   </div>
                 )}
@@ -178,40 +185,40 @@ const CreateItinerary = () => {
               </div>
             </div>
             <div className='answer-card'>
-            <div className='answer-box'>
-              <div className='answer-item '>
-                {generatedItinerary ? (
-                  <div className='generated-itinerary' id='generated-itinerary'>
-                    {generatedItinerary.map((day, index) => (
-                      <div className="mapped" key={index}>
-                        <div className='days'> <h3>Day {index + 1}</h3> </div>
-                        <div className='itinerary'>
-                          <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
-                          <div className='object'><strong>Activities</strong>
-                            <ul>
-                              {day.activities.map((activity, i) => (
-                                <li key={i}>{activity}</li>
-                              ))}
-                            </ul></div>
-                          <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
-                          <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
-                          <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
+              <div className='answer-box'>
+                <div className='answer-item '>
+                  {generatedItinerary ? (
+                    <div className='generated-itinerary' id='generated-itinerary'>
+                      {generatedItinerary.map((day, index) => (
+                        <div className="mapped" key={index}>
+                          <div className='days'> <h3>Day {index + 1}</h3> </div>
+                          <div className='itinerary'>
+                            <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
+                            <div className='object'><strong>Activities</strong>
+                              <ul>
+                                {day.activities.map((activity, i) => (
+                                  <li key={i}>{activity}</li>
+                                ))}
+                              </ul></div>
+                            <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
+                            <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
+                            <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
+                          </div>
+                          {index < generatedItinerary.length - 1 && <hr className='day-divider' />}
                         </div>
-                        {index < generatedItinerary.length - 1 && <hr className='day-divider' />}
-                      </div>
-                    ))}
-                    {store.accessToken && (
-                      <div>
-                        <input  type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)} required></input>
-                        <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  'AI Answer'
-                )}
+                      ))}
+                      {store.accessToken && (
+                        <div>
+                          <input type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)} required></input>
+                          <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    'AI Answer'
+                  )}
+                </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
