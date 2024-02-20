@@ -18,7 +18,7 @@ body {
 }
 .avatar-container {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 104px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,7 +33,7 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  margin: 10px auto;
+  margin: 8px auto;
   
 }
 
@@ -53,8 +53,8 @@ body {
 
 
 .answer-item {
-  margin: 10px 0;
-  padding: 10px;
+  margin: 8px 0;
+  padding: 8px;
   border-radius: 5px;
   background-color: #ffa500;
   color: black;
@@ -66,8 +66,8 @@ body {
 
 
 #answerInput {
-  padding: 10px;
-  margin-right: 5px;
+  padding: 8px;
+  margin-right: 8px;
   border: 2px solid black;
   border-radius: 5px;  
   background-color: #ffa500;
@@ -82,7 +82,7 @@ body {
 }
 
 #nextbutton {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #FF8C00;
   color: white;
   border: none;
@@ -90,7 +90,7 @@ body {
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s ease-in-out;
-  margin-top: 15px;
+  margin-top: 16px;
   
 
 }
@@ -103,11 +103,11 @@ body {
 .box {
   
   width: 300px;
-  margin: 50px auto;
+  margin: 48px auto;
   border-radius: 15px;
   background: #ffa500;
   color: black;
-  padding: 20px;
+  padding: 16px;
   text-align: center;
   font-family: "VT323", monospace;
   font-weight: 400;
@@ -130,13 +130,13 @@ body {
 }
 
 .it-container {
-  padding: 100px;
+  padding: 104px;
 }
 
 .itinerary-container {
   max-width: 1000px;
   margin: auto;
-  padding: 20px;
+  padding: 16px;
   border: 1px solid #333;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -149,7 +149,7 @@ body {
 }
 
 .back-button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #FF8C00;
   color: white;
   border: none;
@@ -167,14 +167,14 @@ body {
 }
 
 .save-button {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background-color: #FF8C00;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 15px;
+  margin-top: 16px;
   transition: background-color 0.3s ease-in-out;
 }
 
@@ -200,8 +200,8 @@ body {
   width: 100%;
   max-width: 800px;
   max-height: 400px;
-  margin: 20px auto;
-  padding: 20px;
+  margin: 16px auto;
+  padding: 16px;
   border-radius: 10px;
   background-color: gray;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -212,7 +212,7 @@ body {
 }
 
 #generated-itinerary {
-  margin-top: 20px;
+  margin-top: 16px;
   width: 100%;
   max-width: 600px;
   background-color: #ffa500;
@@ -221,7 +221,7 @@ body {
 
 .generated-itinerary h2 {
   font-size: 1.75rem;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   background-color: #FF8C00;
   color: black;
   border-radius: 5px;
@@ -230,11 +230,11 @@ body {
 
 .generated-itinerary h3 {
   font-size: 1.2rem;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   display: flex;
   justify-content: flex-start;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 8px;
   background-color: #FF8C00;
   color: white;
   max-width: 65px;
@@ -244,9 +244,9 @@ body {
 
 .generated-itinerary .day-divider {
   border-top: 2px solid black;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 2px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding: 0px;
   
 }
 
@@ -262,7 +262,7 @@ body {
   font-weight: bold;
   color: black;
   background-color: #FF8C00;
-  padding: 2px;
+  padding: 8px;
   border-radius: 2px;
   
 }
@@ -277,18 +277,18 @@ body {
 .generated-itinerary ul {
   list-style-type: none;
   padding: 0;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .generated-itinerary li {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .mapped {
   background-color: #FF8C00;
   border-radius: 5px;
-  padding: 5px;
-  margin-bottom: 10px;
+  padding: 8px;
+  margin-bottom: 8px;
   text-align: center;
 }
