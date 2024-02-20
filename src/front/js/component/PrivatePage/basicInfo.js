@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-const BasicInfo = ({ email, firstName, lastName }) => {
+const BasicInfo = ({ email, firstName}) => {
 
 
     return (
@@ -12,7 +12,7 @@ const BasicInfo = ({ email, firstName, lastName }) => {
             </div>
             <div className="mb-3 d-flex flex-column">
                 <span className="title">Name:</span>
-                <span className="name">{firstName} {lastName}</span>
+                <span className="name">{firstName}</span>
             </div>
         </div>
     );
