@@ -190,11 +190,12 @@ const CreateItinerary = () => {
 
     return (
       <>
-        <div className="container">
-          <div className="avatar-container" id='avatarcontainer'>
-            <div className="card mb-5">
+          <div className="avatar-container col-12" id='avatarcontainer'>
+            <div className="card1 col-6">
               <div className='avatar-box '>
-                <div className='avatar me-5' id='avatar-placeholder'><img src={avatar1} alt="avatar" id='avatar' /> </div>
+                <div className='avatar ' id='avatar-placeholder'><img src={avatar1} alt="avatar" id='avatar' />
+                  <p className="card-text" id='Dio'>Assistant DioDio</p> 
+                </div>
                 <div className='box n1' id='question'>
                   {currentQuestionIndex === 8
                     ? 'Here is your itinerary, enjoy your holiday!'
@@ -202,9 +203,9 @@ const CreateItinerary = () => {
                 </div>
               </div>
               <div className="card-body">
-                <p className="card-text" id='Dio'>Assistant DioDio</p>
+                
                 {currentQuestionIndex !== 8 && (
-                  <div>
+                  <div className='input-buttons'>
                     <input
                       type='text'
                       id='answerInput'
@@ -214,22 +215,26 @@ const CreateItinerary = () => {
                       onKeyPress={handleAnswerInput}
                       required
                     />
-                    {currentQuestionIndex !== 0 && (
+                    <div className='nbutton'>
+                      {currentQuestionIndex !== 0 && (
                       <button id='nextbutton' className='me-4' onClick={goToPreviousQuestion}>Previous Question</button>
-                    )}
-                    <button id='nextbutton' onClick={askNextQuestion}>{currentQuestionIndex === 7 ? 'Generate Itinerary' : 'Next Question'}</button>
+                      )}
+                      <button id='nextbutton' onClick={askNextQuestion}>{currentQuestionIndex === 7 ? 'Generate Itinerary' : 'Next Question'}</button>
+                    </div>
                   </div>
                 )}
-                {currentQuestionIndex === 8 && (
-                  <button id='nextbutton' onClick={handleStartAgain}>Start Again</button>
-                )}
+                <div className='start-again'>
+                  {currentQuestionIndex === 8 && (
+                    <button id='nextbutton' onClick={handleStartAgain}>Start Again</button>
+                  )}
+                </div>
               </div>
             </div>
             <div className='answer-card'>
               <div className='answer-box'>
                 <div className='answer-item '>
                   {loading ? (
-                    <FontAwesomeIcon icon={faSync} spin />
+                    <FontAwesomeIcon className='cog' icon={faSync} spin />
                   ) : (
                     <>
                       {generatedItinerary !== null && (
@@ -264,12 +269,12 @@ const CreateItinerary = () => {
                   )}
                 </div>
               </div>
-              <div className="position-fixed top-50 start-50 translate-middle">
+              <div className="toaster">
                 <ToastContainer position="top-center">
-                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={4000} autohide
+                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={5000} autohide
                     className="bg-dark text-white border border-light">
                     <Toast.Header>
-                      <strong className="me-auto">Notification</strong>
+                      <strong className="me-auto text-black">Notification</strong>
                     </Toast.Header>
                     <Toast.Body>{toastMessage}</Toast.Body>
                   </Toast>
@@ -277,7 +282,7 @@ const CreateItinerary = () => {
               </div>
             </div>
           </div>
-        </div>
+        
       </>
     );
 

@@ -36,6 +36,7 @@ const SignUpForm = ({openLoginModal}) => {
             });
     
             console.log("Full Response:", response); // Log the full response
+            
 
             if (response) {
                 alert('The user was created successfully')
@@ -94,6 +95,7 @@ const SignUpForm = ({openLoginModal}) => {
                 onSuccess={credentialResponse => {
                     const decoded = jwtDecode (credentialResponse?.credential);
                     console.log(decoded);
+                    console.log(decoded.email)
                 }}
                 onError={() => {
                     console.log('Login Failed');
