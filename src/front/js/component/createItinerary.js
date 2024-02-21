@@ -2,6 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../../styles/createItinerary.css';
 import avatar1 from "../../img/avatar1.png";
 import { Context } from "../store/appContext";
+import { ToastContainer, Toast } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 const CreateItinerary = () => {
   {
@@ -34,6 +37,9 @@ const CreateItinerary = () => {
     const [quizInProgress, setQuizInProgress] = useState(true);
     const { store, actions } = useContext(Context);
     const [itineraryName, setItineraryName] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
 
     const handleAnswerInput = (e) => {
       e.persist();
@@ -55,7 +61,8 @@ const CreateItinerary = () => {
       }
 
       if (!userAnswers[getKeyByIndex()].trim()) {
-        alert("Please provide an answer before moving to the next question.");
+        setToastMessage("Please provide an answer before moving to the next question.");
+        setShowToast(true);
         return;
       }
 
@@ -67,7 +74,8 @@ const CreateItinerary = () => {
       if (currentQuestionIndex === 2) {
         const numDays = parseInt(userAnswers["Time at disposal"]);
         if (!store.accessToken && (isNaN(numDays) || numDays > 3)) {
-          alert("In the Demo version, you can only see itineraries of up to 3 days. Please Login to unlock this feature!");
+          setToastMessage("In the Demo version, you can only see itineraries of up to 3 days. Please Login to unlock this feature!");
+          setShowToast(true);
           return;
         }
       }
@@ -78,12 +86,15 @@ const CreateItinerary = () => {
         if (!store.accessToken) {
           const numItineraries = parseInt(sessionStorage.getItem('numItineraries')) || 0;
           if (numItineraries >= 3) {
-            alert("In the Demo version, you can only generate up to 3 itineraries per day.");
+            setToastMessage("In the Demo version, you can only generate up to 3 itineraries per day.");
+            setShowToast(true);
             return;
           }
           // Increment the number of itineraries
           sessionStorage.setItem('numItineraries', numItineraries + 1);
         }
+        setLoading(true);
+
         const response = await fetch(process.env.BACKEND_URL + '/api/createItinerary', {
           method: 'POST',
           headers: {
@@ -97,8 +108,10 @@ const CreateItinerary = () => {
         if (response.ok) {
           setGeneratedItinerary(result.days);
           setQuizInProgress(false);
+          setLoading(false);
         } else {
           console.error('Error generating itinerary:', result.error);
+          setLoading(false);
         }
       }
     };
@@ -131,9 +144,11 @@ const CreateItinerary = () => {
         console.log(response);
 
         if (!response.ok) {
-          console.error('Error saving itinerary:', response.statusText);
+          setToastMessage(`Error saving itinerary: ${response.statusText}`);
+          setShowToast(true);
         } else {
-          alert("Itinerary successfully saved!");
+          setToastMessage("Itinerary successfully saved!");
+          setShowToast(true);
         }
       } catch (error) {
         console.error('Error:', error.message);
@@ -144,7 +159,8 @@ const CreateItinerary = () => {
       if (!store.accessToken) {
         const numItineraries = parseInt(sessionStorage.getItem('numItineraries')) || 0;
         if (numItineraries >= 3) {
-          alert("In the Demo version, you can only generate up to 3 itineraries per day.");
+          setToastMessage("In the Demo version, you can only generate up to 3 itineraries per day.");
+          setShowToast(true);
           return;
         }
       }
@@ -212,37 +228,52 @@ const CreateItinerary = () => {
             <div className='answer-card'>
               <div className='answer-box'>
                 <div className='answer-item '>
-                  {generatedItinerary ? (
-                    <div className='generated-itinerary' id='generated-itinerary'>
-                      {generatedItinerary.map((day, index) => (
-                        <div className="mapped" key={index}>
-                          <div className='days'> <h3>Day {index + 1}</h3> </div>
-                          <div className='itinerary'>
-                            <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
-                            <div className='object'><strong>Activities</strong>
-                              <ul>
-                                {day.activities.map((activity, i) => (
-                                  <li key={i}>{activity}</li>
-                                ))}
-                              </ul></div>
-                            <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
-                            <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
-                            <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
-                          </div>
-                          {index < generatedItinerary.length - 1 && <hr className='day-divider' />}
-                        </div>
-                      ))}
-                      {store.accessToken && (
-                        <div>
-                          <input type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)} required></input>
-                          <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
+                  {loading ? (
+                    <FontAwesomeIcon icon={faSync} spin />
+                  ) : (
+                    <>
+                      {generatedItinerary !== null && (
+                        <div className='generated-itinerary' id='generated-itinerary'>
+                          {generatedItinerary.map((day, index) => (
+                            <div className="mapped" key={index}>
+                              <div className='days'> <h3>Day {index + 1}</h3> </div>
+                              <div className='itinerary'>
+                                <div className='object'><strong>Accommodation</strong> {day.accommodation}</div> <br />
+                                <div className='object'><strong>Activities</strong>
+                                  <ul>
+                                    {day.activities.map((activity, i) => (
+                                      <li key={i}>{activity}</li>
+                                    ))}
+                                  </ul></div>
+                                <div className='object'> <strong>Lunch</strong> {day.lunch}</div> <br />
+                                <div className='object'> <strong>Dinner</strong> {day.dinner}</div> <br />
+                                <div className='object'> <strong>Transportation</strong> {day.transportation}</div>
+                              </div>
+                              {index < generatedItinerary.length - 1 && <hr className='day-divider' />}
+                            </div>
+                          ))}
+                          {store.accessToken && (
+                            <div>
+                              <input type="text" name="Itinerary Name" placeholder="Please give a name to your itinerary..." onChange={e => setItineraryName(e.target.value)} required></input>
+                              <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
+                            </div>
+                          )}
                         </div>
                       )}
-                    </div>
-                  ) : (
-                    'AI Answer'
+                    </>
                   )}
                 </div>
+              </div>
+              <div className="position-fixed top-50 start-50 translate-middle">
+                <ToastContainer position="top-center">
+                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={4000} autohide
+                    className="bg-dark text-white border border-light">
+                    <Toast.Header>
+                      <strong className="me-auto">Notification</strong>
+                    </Toast.Header>
+                    <Toast.Body>{toastMessage}</Toast.Body>
+                  </Toast>
+                </ToastContainer>
               </div>
             </div>
           </div>
