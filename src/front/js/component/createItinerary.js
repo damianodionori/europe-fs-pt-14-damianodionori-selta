@@ -232,12 +232,12 @@ const CreateItinerary = () => {
             </div>
             <div className='answer-card'>
               <div className='answer-box'>
-                <div className='answer-item '>
+                <div className='answer-item'>
                   {loading ? (
                     <FontAwesomeIcon className='cog' icon={faSync} spin />
                   ) : (
                     <>
-                      {generatedItinerary !== null && (
+                      {generatedItinerary !== null ? (
                         <div className='generated-itinerary' id='generated-itinerary'>
                           {generatedItinerary.map((day, index) => (
                             <div className="mapped" key={index}>
@@ -264,6 +264,8 @@ const CreateItinerary = () => {
                             </div>
                           )}
                         </div>
+                      ) : (
+                        <p>Your itinerary will be shown here</p>
                       )}
                     </>
                   )}

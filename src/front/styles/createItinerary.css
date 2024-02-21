@@ -299,7 +299,6 @@ body {
   text-align: center;
 }
 
-
 .toaster {
   position: fixed;
   top: 22%;
@@ -317,5 +316,4 @@ body {
 
 .start-again {
   display: flex;
-
 }
