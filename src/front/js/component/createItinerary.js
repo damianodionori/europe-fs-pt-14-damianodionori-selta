@@ -227,12 +227,12 @@ const CreateItinerary = () => {
             </div>
             <div className='answer-card'>
               <div className='answer-box'>
-                <div className='answer-item '>
+                <div className='answer-item'>
                   {loading ? (
-                    <FontAwesomeIcon icon={faSync} spin />
+                    <FontAwesomeIcon className='cog' icon={faSync} spin />
                   ) : (
                     <>
-                      {generatedItinerary !== null && (
+                      {generatedItinerary !== null ? (
                         <div className='generated-itinerary' id='generated-itinerary'>
                           {generatedItinerary.map((day, index) => (
                             <div className="mapped" key={index}>
@@ -259,17 +259,19 @@ const CreateItinerary = () => {
                             </div>
                           )}
                         </div>
+                      ) : (
+                        <p>Your itinerary will be shown here</p>
                       )}
                     </>
                   )}
                 </div>
               </div>
-              <div className="position-fixed top-50 start-50 translate-middle">
+              <div className="toaster">
                 <ToastContainer position="top-center">
-                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={4000} autohide
+                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={5000} autohide
                     className="bg-dark text-white border border-light">
                     <Toast.Header>
-                      <strong className="me-auto">Notification</strong>
+                      <strong className="me-auto text-black">Notification</strong>
                     </Toast.Header>
                     <Toast.Body>{toastMessage}</Toast.Body>
                   </Toast>

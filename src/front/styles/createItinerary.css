@@ -292,3 +292,18 @@ body {
   margin-bottom: 8px;
   text-align: center;
 }
+
+.toaster {
+  position: fixed;
+  top: 22%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cog {
+  height: 32px;
+  width: 32px;
+}
