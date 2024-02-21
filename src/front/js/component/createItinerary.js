@@ -3,6 +3,8 @@ import '../../styles/createItinerary.css';
 import avatar1 from "../../img/avatar1.png";
 import { Context } from "../store/appContext";
 import { ToastContainer, Toast } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 const CreateItinerary = () => {
   {
@@ -226,14 +228,12 @@ const CreateItinerary = () => {
             <div className='answer-card'>
               <div className='answer-box'>
                 <div className='answer-item '>
-                  {generatedItinerary ? (
-                    <div className='generated-itinerary' id='generated-itinerary'>
-                      {loading ? (
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                          <path d="M440.7 12.6l4 82.8A247.2 247.2 0 0 0 255.8 8C134.7 8 33.9 94.9 12.3 209.8A12 12 0 0 0 24.1 224h49.1a12 12 0 0 0 11.7-9.3 175.9 175.9 0 0 1 317-56.9l-101.5-4.9a12 12 0 0 0 -12.6 12v47.4a12 12 0 0 0 12 12H500a12 12 0 0 0 12-12V12a12 12 0 0 0 -12-12h-47.4a12 12 0 0 0 -12 12.6zM255.8 432a175.6 175.6 0 0 1 -146-77.8l101.8 4.9a12 12 0 0 0 12.6-12v-47.4a12 12 0 0 0 -12-12H12a12 12 0 0 0 -12 12V500a12 12 0 0 0 12 12h47.4a12 12 0 0 0 12-12.6l-4.2-82.6A247.2 247.2 0 0 0 255.8 504c121.1 0 221.9-86.9 243.6-201.8a12 12 0 0 0 -11.8-14.2h-49.1a12 12 0 0 0 -11.7 9.3A175.9 175.9 0 0 1 255.8 432z" />
-                        </svg>
-                      ) : (
-                        <>
+                  {loading ? (
+                    <FontAwesomeIcon icon={faSync} spin />
+                  ) : (
+                    <>
+                      {generatedItinerary !== null && (
+                        <div className='generated-itinerary' id='generated-itinerary'>
                           {generatedItinerary.map((day, index) => (
                             <div className="mapped" key={index}>
                               <div className='days'> <h3>Day {index + 1}</h3> </div>
@@ -258,28 +258,25 @@ const CreateItinerary = () => {
                               <button className="save-button" onClick={handleSaveItinerary}>Save Itinerary</button>
                             </div>
                           )}
-                        </>
+                        </div>
                       )}
-                      {!loading && <p>AI response</p>}
-                    </div>
-                  ) : (
-                    'AI Answer'
+                    </>
                   )}
                 </div>
               </div>
+              <div className="position-fixed top-50 start-50 translate-middle">
+                <ToastContainer position="top-center">
+                  <Toast show={showToast} onClose={() => setShowToast(false)} delay={4000} autohide
+                    className="bg-dark text-white border border-light">
+                    <Toast.Header>
+                      <strong className="me-auto">Notification</strong>
+                    </Toast.Header>
+                    <Toast.Body>{toastMessage}</Toast.Body>
+                  </Toast>
+                </ToastContainer>
+              </div>
             </div>
           </div>
-        </div >
-        <div className="position-fixed top-50 start-50 translate-middle">
-          <ToastContainer position="top-center">
-            <Toast show={showToast} onClose={() => setShowToast(false)} delay={4000} autohide
-              className="bg-dark text-white border border-light">
-              <Toast.Header>
-                <strong className="me-auto">Notification</strong>
-              </Toast.Header>
-              <Toast.Body>{toastMessage}</Toast.Body>
-            </Toast>
-          </ToastContainer>
         </div>
       </>
     );
