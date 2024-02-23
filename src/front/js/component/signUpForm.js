@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import '../../styles/authForms.css';
 import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom'
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
+
 
 const SignUpForm = ({openLoginModal}) => {
 
@@ -13,11 +12,21 @@ const SignUpForm = ({openLoginModal}) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    //show password
     const [showPassword, setShowPassword] = useState(false);
-    //login logic
     const toLogin = useNavigate();
-    
+    //for google login
+
+    // useEffect(() => {
+    //     const signInDiv = document.getElementById("signInDiv");
+    //     if (signInDiv) {
+    //         google.accounts.id.renderButton(signInDiv, {
+    //             theme: "outline",
+    //             size: "large"
+    //         });
+    //     } else {
+    //         console.error("Failed to find signInDiv element.");
+    //     }
+    // }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -91,17 +100,8 @@ const SignUpForm = ({openLoginModal}) => {
                 </div>
             </div>
             <button type="submit" className="submit-button">Submit</button>
-            <GoogleLogin
-                onSuccess={credentialResponse => {
-                    const decoded = jwtDecode (credentialResponse?.credential);
-                    console.log(decoded);
-                    console.log(decoded.email)
-                }}
-                onError={() => {
-                    console.log('Login Failed');
-                }}
-            />
             
+
         </form>
     );
 };
