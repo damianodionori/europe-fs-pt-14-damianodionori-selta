@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react';
 import '../../styles/authForms.css';
 import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom'
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 const SignUpForm = ({openLoginModal}) => {
 
     const {store, actions} = useContext(Context)
     const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -16,6 +17,7 @@ const SignUpForm = ({openLoginModal}) => {
     const [showPassword, setShowPassword] = useState(false);
     //login logic
     const toLogin = useNavigate();
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,13 +30,13 @@ const SignUpForm = ({openLoginModal}) => {
         try {
             const response = await actions.signup({
                 first_name: firstName,
-                last_name: lastName,
                 email: email,
                 password: password,
                 confirm_password: confirmPassword,
             });
     
             console.log("Full Response:", response); // Log the full response
+            
 
             if (response) {
                 alert('The user was created successfully')
@@ -61,23 +63,19 @@ const SignUpForm = ({openLoginModal}) => {
 
             <div className="form-group">
                 <label className="label">First Name:</label>
-                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" />
-            </div>
-            <div className="form-group">
-                <label className="label">Last Name:</label>
-                <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} className="input" />
+                <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="input" required />
             </div>
             <div className="form-group">
                 <label className="label">Email:</label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" />
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Password:</label>
-                <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="input" />
+                <input type={showPassword ? 'text' : 'password'} value={password} onChange={(e) => setPassword(e.target.value)} className="input" required/>
             </div>
             <div className="form-group">
                 <label className="label">Confirm Password:</label>
-                <input type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="input" />
+                <input type={showPassword ? 'text' : 'password'} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="input" required/>
             </div>
             {errorMessage && <div className="error-message">{errorMessage}</div>}
             <div className="eye-icon-container" >
@@ -93,7 +91,17 @@ const SignUpForm = ({openLoginModal}) => {
                 </div>
             </div>
             <button type="submit" className="submit-button">Submit</button>
-
+            <GoogleLogin
+                onSuccess={credentialResponse => {
+                    const decoded = jwtDecode (credentialResponse?.credential);
+                    console.log(decoded);
+                    console.log(decoded.email)
+                }}
+                onError={() => {
+                    console.log('Login Failed');
+                }}
+            />
+            
         </form>
     );
 };
