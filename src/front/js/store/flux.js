@@ -45,41 +45,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ message: 'Signup failed. Please try again.' });
 				}
 			},
-		
-			/* handleGoogleSignup : async (firstName, email, ) => {
 			
-				if (password !== confirmPassword) {
-					setErrorMessage('The passwords do not match');
-					return;
-				}
-		
-				try {
-					const response = await actions.signup({
-						first_name: firstName,
-						email: email,
-						password: password,
-						confirm_password: confirmPassword,
-					});
-			
-					console.log("Full Response:", response); // Log the full response
-		
-					if (response) {
-						alert('The user was created successfully')
-						toLogin ("/?openLogin=true")
-		
-						
-						//redirect user to Home Page and open login modal useLocation()
-						console.log("SignUp successful");
-					} else {
-						const errorText = response?.message || 'An unknown error occurred';
-						setErrorMessage(`SignUp failed: ${errorText}`);
-						console.error("SignUp failed:", errorText);
-					}
-				} catch (error) {
-					setErrorMessage('An error occurred during SignUp', error);
-					console.error("Error during SignUp:", error);
-				}
-			}, */
+			 // New action to handle Google login
+			 googleLogin: async () => {
+                try {
+                    await gapi.auth2.init({
+                        client_id: "533568438503-75kgn3gkshmbrlnhsg2ithfchvc10ebi.apps.googleusercontent.com",
+                        scope: 'email profile openid',
+                    });
+                    const authInstance = gapi.auth2.getAuthInstance();
+                    const googleUser = await authInstance.signIn();
+
+                    // Extract user data from the authentication response
+                    const profile = googleUser.getBasicProfile();
+                    const idToken = googleUser.getAuthResponse().id_token;
+
+                    // Update the application state
+                    setStore({ 
+                        accessToken: idToken,
+                        isLoggedIn: true,
+                    });
+
+                    // Optionally, perform additional actions after successful login
+
+                } catch (error) {
+                    console.error('Error during Google login:', error);
+                    // Handle error
+                }
+            },
 
 
 			setIsLoggedIn: (isLoggedIn) => {
