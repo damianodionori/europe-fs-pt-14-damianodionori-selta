@@ -193,7 +193,7 @@ const PrivatePage = () => {
                         <Bookmark savedItineraries={savedItineraries} activeTab={activeTab} />
                     </div>
                     <div className={`tab-pane fade show ${activeTab === 'achievements' ? 'active' : ''}`} id="achievements">
-                        <p>Achievements Content Goes Here</p>
+                        <p>No Achievements yet</p>
                     </div>
                     <div className={`tab-pane fade show ${activeTab === 'itinerary' ? 'active' : ''}`} id="itinerary">
                         <p>Create Itinerary Content Goes Here</p>

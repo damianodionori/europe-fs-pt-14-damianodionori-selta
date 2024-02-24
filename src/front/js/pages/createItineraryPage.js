@@ -11,16 +11,15 @@ const CreateItineraryPage = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className='minheight' style={{ backgroundImage: `url(${patternImage})`}}>
+    <div className='minheight' style={{ backgroundImage: `url(${patternImage})` }}>
       <div className='it-container'>
-      <div className="itinerary-container">
-        <div className="page-title">Create Itinerary</div>
-        <CreateItinerary />
-        {store.accessToken && (
-          <Link to="/privatePage" className="back-button">
-            Back to my Profile
-          </Link>)}
-      </div>
+        <div className="itinerary-container">
+          <CreateItinerary />
+          {store.accessToken && (
+            <Link to="/privatePage" className="back-button">
+              Back to my Profile
+            </Link>)}
+        </div>
       </div>
     </div>
   );

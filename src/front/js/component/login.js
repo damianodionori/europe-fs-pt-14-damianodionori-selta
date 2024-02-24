@@ -65,6 +65,7 @@ function Login({ show, handleClose, }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="input-field mb-2"
+            required
           />
         </div>
         <div className="inputs">
@@ -77,6 +78,7 @@ function Login({ show, handleClose, }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="input-field mb-3"
+            required
           />
         </div>
         <div className="eye-icon-container" >

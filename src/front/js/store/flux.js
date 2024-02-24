@@ -46,7 +46,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 		
+			/* handleGoogleSignup : async (firstName, email, ) => {
 			
+				if (password !== confirmPassword) {
+					setErrorMessage('The passwords do not match');
+					return;
+				}
+		
+				try {
+					const response = await actions.signup({
+						first_name: firstName,
+						email: email,
+						password: password,
+						confirm_password: confirmPassword,
+					});
+			
+					console.log("Full Response:", response); // Log the full response
+		
+					if (response) {
+						alert('The user was created successfully')
+						toLogin ("/?openLogin=true")
+		
+						
+						//redirect user to Home Page and open login modal useLocation()
+						console.log("SignUp successful");
+					} else {
+						const errorText = response?.message || 'An unknown error occurred';
+						setErrorMessage(`SignUp failed: ${errorText}`);
+						console.error("SignUp failed:", errorText);
+					}
+				} catch (error) {
+					setErrorMessage('An error occurred during SignUp', error);
+					console.error("Error during SignUp:", error);
+				}
+			}, */
+
+
 			setIsLoggedIn: (isLoggedIn) => {
 				const store = getStore();
 				setStore({...store, isLoggedIn})
