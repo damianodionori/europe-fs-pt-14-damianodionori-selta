@@ -11,13 +11,18 @@ recommendations, and earning achievements.
 
 Welcome to our website!
 
+
 <img src="Screenshot 2024-05-25 182716.png" width=700px>
+
 
 Save them for later!
 
+
 <img src="Screenshot 2024-03-18 154008.png" width=700px>
 
+
 Earning achievements as you save itineraries!
+
 
 <img src="Screenshot 2024-03-18 153708.png" width=700px>
 
