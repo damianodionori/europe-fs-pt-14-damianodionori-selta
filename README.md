@@ -9,7 +9,11 @@ recommendations, and earning achievements.
 
 ## Screenshots
 
-Save them!
+Welcome to our website!
+
+<img src="Screenshot 2024-05-25 182716.png" width=700px>
+
+Save them for later!
 
 <img src="Screenshot 2024-03-18 154008.png" width=700px>
 
