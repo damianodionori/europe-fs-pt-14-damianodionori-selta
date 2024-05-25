@@ -7,7 +7,10 @@ planning. Implemented features for creating and
 saving itineraries, personalized travel
 recommendations, and earning achievements.
 
+## Screenshots
 
+
+<img src="Screenshot 2024-03-18 153708.png" width=700px>
 
 ## Authors
 
