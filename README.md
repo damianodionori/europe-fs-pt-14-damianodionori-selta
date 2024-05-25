@@ -9,6 +9,7 @@ recommendations, and earning achievements.
 
 ## Screenshots
 
+Earning achievements as you save itineraries!
 
 <img src="Screenshot 2024-03-18 153708.png" width=700px>
 
