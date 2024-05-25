@@ -14,9 +14,13 @@ Welcome to our website!
 
 <img src="Screenshot 2024-05-25 182716.png" width=700px>
 
-Answer the Avatar questions to get a personalised itinerary!
+Answer the Avatar questions!
 
 <img src="Screenshot 2024-05-25 183113.png" width=700px>
+
+Get a personalised itinerary!
+
+<img src="Screenshot 2024-03-20 132951.png" width=700px>
 
 Save them for later!
 
